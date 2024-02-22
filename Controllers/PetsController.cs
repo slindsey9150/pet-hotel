@@ -15,32 +15,42 @@ namespace pet_hotel.Controllers
     public class PetsController : ControllerBase
     {
         private readonly ApplicationContext _context;
-        public PetsController(ApplicationContext context) {
+        public PetsController(ApplicationContext context)
+        {
             _context = context;
         }
 
         // This is just a stub for GET / to prevent any weird frontend errors that 
         // occur when the route is missing in this controller
         [HttpGet]
-        public IEnumerable<Pet> GetPets() {
+        public IEnumerable<Pet> GetPets()
+        {
             Console.WriteLine("get route getting");
             return _context.Pets
-            
+
             .Include(Pet => Pet.OwnedBy);
         }
 
-            [HttpGet ("{id}")]
-        public ActionResult<Pet> GetPetById(int id) {
+        [HttpGet("{id}")]
+        public ActionResult<Pet> GetPetById(int id)
+        {
             Console.WriteLine("get route getting");
             Pet pet = _context.Pets
                 .SingleOrDefault(pet => pet.id == id);
-
-            if (pet is null) {
+            if (pet is null)
+            {
                 return NotFound();
             }
-                return pet;
-
+            return pet;
         }
+        [HttpPost]
+        public Pet Post(Pet pet)
+            {
+                Console.WriteLine("post route postting");
+                _context.Add(pet);
+                _context.SaveChanges();
+                return pet;
+            }
 
         // [HttpGet]
         // [Route("test")]
