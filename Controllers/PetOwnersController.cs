@@ -33,5 +33,21 @@ namespace pet_hotel.Controllers
                 _context.SaveChanges();
                 return owner;
             }
+        //          [HttpPut("{id}")]
+        // public PetOwner Put(PetOwner owner)
+        //     {
+        //         Console.WriteLine("post route postting");
+        //         _context.Add(owner);
+        //         _context.SaveChanges();
+        //         return owner;
+        //     }
+        //          [HttpPost]
+        // public PetOwner Post(PetOwner owner)
+        //     {
+        //         Console.WriteLine("post route postting");
+        //         _context.Add(owner);
+        //         _context.SaveChanges();
+        //         return owner;
+        //     }
     }
 }

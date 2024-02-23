@@ -51,6 +51,14 @@ namespace pet_hotel.Controllers
                 _context.SaveChanges();
                 return pet;
             }
+             [HttpPut("{id}")]
+        public Pet Put(int id, Pet pet)
+            {
+                pet.id = id;
+                _context.Update(pet);
+                _context.SaveChanges();
+                return pet;
+            }
 
         // [HttpGet]
         // [Route("test")]
